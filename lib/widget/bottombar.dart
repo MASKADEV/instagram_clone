@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomBottomBar extends StatefulWidget {
+  final Function(int) function;
+  final int selectedtab;
+  CustomBottomBar({this.function, this.selectedtab});
   @override
   _CustomBottomBarState createState() => _CustomBottomBarState();
 }
@@ -20,6 +23,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   Widget build(BuildContext context) {
     double sizeHeight = MediaQuery.of(context).size.height;
     double sizeWidth = MediaQuery.of(context).size.width;
+    int selected = widget.selectedtab ?? 0;
     return Container(
       height: sizeHeight * 0.1,
       width: sizeWidth,
@@ -28,7 +32,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             topRight: Radius.circular(25),
             topLeft: Radius.circular(25),
           ),
-          color: Color(0xFF27272E)),
+          color: Color(0xFF663A82)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: Row(
@@ -37,6 +41,8 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             GestureDetector(
               onTap: () {
                 setState(() {
+                  widget.function(0);
+                  selected = 0;
                   _selectedhome = true;
                   _selectedsearch = false;
                   _selectedlove = false;
@@ -53,6 +59,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             GestureDetector(
               onTap: () {
                 setState(() {
+                  widget.function(1);
+                  selected = 1;
+
                   _selectedhome = false;
                   _selectedsearch = true;
                   _selectedlove = false;
@@ -69,6 +78,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             GestureDetector(
               onTap: () {
                 setState(() {
+                  widget.function(2);
+                  selected = 2;
+
                   _selectedhome = false;
                   _selectedsearch = false;
                   _selectedlove = false;
@@ -85,6 +97,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             GestureDetector(
               onTap: () {
                 setState(() {
+                  widget.function(3);
+                  selected = 3;
+
                   _selectedhome = false;
                   _selectedsearch = false;
                   _selectedlove = true;
@@ -101,6 +116,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             GestureDetector(
               onTap: () {
                 setState(() {
+                  widget.function(4);
+                  selected = 4;
+
                   _selectedhome = false;
                   _selectedsearch = false;
                   _selectedlove = false;
